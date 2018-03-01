@@ -1,12 +1,19 @@
+
+
 ## 小程序针对request的简单配置
+
 ###简介
->在小程序开发中，同样也需要我们进行用户登录，通常情况下我们是token来验证用户信息。在小程序中，我个人是获取到token然后放在缓存中，每次数据请求的时候放在header头部，但同时又要考虑token过期的情况，所以，我这里简单的进行了一下处理。
+
+>在小程序开发中，同样也需要我们进行用户登录，通常情况下我们是token来验证用户信息。这里是我们将request进行的简易封装。
+
 ###流程
->1.调用封装好的request的方法
- 2.执行过程中回到缓存中查找token值，如果没查到则会直接调用getToken方法，重新获取token值
- 3.getToken是通过调用小程序的登录和获取用户信息接口拿到的参数调用我们自己的login接口返回token值
- 4.对request的接口进行了简单的处理，用户调用时可以直接用reset
+
+ 1. 调用封装好的request的方法
+ 2. 执行过程中回到缓存中查找token值，如果没查到则会直接调用getToken方法，重新获取token值
+ 3. getToken是通过调用小程序的登录和获取用户信息接口拿到的参数调用我们自己的login接口返回token值
+
 ###代码
+
 ```app.js
 const API_URL = 'https://xxxx/api/'  //接口
 
@@ -106,7 +113,9 @@ App({
     }
 })
 ```
+
 ###调用方法
+
 >官方的用法一样 const app = getApp()
 app.request和wx.request一样！
 类似https://xxxx/api/login的调用方式
